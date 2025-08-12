@@ -1,0 +1,247 @@
+    body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: #f6f6f6;
+        margin: 0;
+        padding: 0 0 80px 0;
+        color: #222;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    header {
+        padding: 18px 0;
+        background: #2a2a72;
+        color: #fff;
+        text-align: center;
+        font-size: 1.35em;
+        font-weight: 600;
+        letter-spacing: 2px;
+    }
+
+    section {
+        margin-top: 24px;
+        margin-bottom: 28px;
+        padding: 0 16px;
+    }
+
+    .day-section {
+        background: #fff;
+        border-radius: 11px;
+        box-shadow: 0 2px 8px #0000000e;
+        margin-bottom: 18px;
+        padding: 17px 13px 11px 13px;
+    }
+
+    .day-title {
+        color: #2a2a72;
+        font-size: 1.08em;
+        margin-bottom: 9px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    ul.workout-list {
+        margin: 0 0 2px 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    ul.workout-list li {
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+        font-size: 1em;
+        transition: background 0.18s;
+    }
+
+    ul.workout-list li:last-child {
+        border-bottom: none;
+    }
+
+    .workout-ex {
+        color: #1d5fad;
+        cursor: pointer;
+        text-decoration: underline dotted;
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: 1em;
+        outline: none;
+        transition: color 0.18s;
+    }
+
+    .workout-ex:hover {
+        color: #203975;
+    }
+
+    .ex-modal-bg {
+        display: none;
+        position: fixed;
+        z-index: 8;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.36);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ex-modal {
+        background: #fff;
+        border-radius: 12px;
+        max-width: 95vw;
+        min-width: 260px;
+        max-height: 90vh;
+        overflow: auto;
+        padding: 18px 15px;
+        box-shadow: 0 4px 32px #0002;
+        text-align: center;
+        position: relative;
+        animation: fadeIn 0.22s;
+    }
+
+    .modal-ex-title {
+        color: #2a2a72;
+        font-weight: bold;
+        font-size: 1.11em;
+        margin-bottom: 10px;
+    }
+
+    .modal-close-btn {
+        position: absolute;
+        top: 10px;
+        right: 12px;
+        background: #eee;
+        border: none;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        color: #333;
+        font-size: 1.1em;
+        cursor: pointer;
+        font-weight: 700;
+    }
+
+    .modal-img {
+        max-width: 100%;
+        max-height: 260px;
+        margin-bottom: 13px;
+        border-radius: 8px;
+        background: #fafafd;
+    }
+
+    .modal-video {
+        width: 100%;
+        max-width: 330px;
+        height: 190px;
+        margin-bottom: 13px;
+        border-radius: 8px;
+        background: #fafafd;
+    }
+
+    .instructions {
+        font-size: 0.99em;
+        color: #454569;
+        padding: 0 5px 0 13px;
+        line-height: 1.5;
+    }
+
+    /* Floating Timer Box */
+    #timerBox {
+        position: fixed;
+        top: 80px;
+        right: 10px;
+        background: #2a2a72;
+        color: #fff;
+        padding: 12px;
+        border-radius: 10px;
+        text-align: center;
+        font-family: monospace;
+        font-size: 1.4em;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        z-index: 20;
+    }
+
+    #timerBox input {
+        font-size: 1em;
+        padding: 3px;
+        margin: 2px;
+    }
+
+    #timerBox button {
+        background: #fff;
+        border: none;
+        color: #2a2a72;
+        margin: 4px 2px;
+        padding: 4px 8px;
+        font-size: 1.02em;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #timerBox button:hover {
+        background: #ffdd57;
+    }
+
+
+
+    @media (max-width:480px) {
+        body {
+            font-size: 1em;
+        }
+
+        .modal-video {
+            height: 170px;
+        }
+
+        .ex-modal {
+            min-width: 220px;
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.98);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        max-width: 480px;
+        background: #2a2a72;
+        color: #fff;
+        font-size: 0.97em;
+        text-align: center;
+        padding: 13px 10px 13px 10px;
+        line-height: 1.6;
+        z-index: 6;
+        letter-spacing: 1px;
+    }
+
+    .keep-in-mind {
+        font-size: 1.02em;
+        color: #2a2a72;
+        padding: 8px 0 0 0;
+        font-weight: 600;
+    }
+
+    .mind-tips {
+        padding-left: 20px;
+        font-weight: 400;
+        color: #3e4788;
+    }
+
+    /* Hide scroll bars on Webkit for clean look */
+    ::-webkit-scrollbar {
+        display: none;
+    }
