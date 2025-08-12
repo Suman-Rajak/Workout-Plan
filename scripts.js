@@ -272,8 +272,20 @@ function showModal(exKey) {
         document.getElementById("modalTitle").textContent = data.title;
         var mediaHtml = "";
         if (data.type === "video") {
-            mediaHtml = `<iframe class='modal-video' src='${data.src}' title='${data.title}' frameborder='0' allowfullscreen allow='autoplay'></iframe>`;
-        } else if (data.type === "videos") {
+            // If it's a local mp4, use the native video player
+            if (data.src.toLowerCase().endsWith(".mp4")) {
+                mediaHtml = `
+            <video class="modal-video" controls>
+                <source src="${data.src}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        `;
+            } else {
+                // Else, treat as embed (YouTube, Vimeo, etc.)
+                mediaHtml = `<iframe class='modal-video' src='${data.src}' title='${data.title}' frameborder='0' allowfullscreen allow='autoplay'></iframe>`;
+            }
+        }
+        else if (data.type === "videos") {
             mediaHtml = data.srcs.map(v =>
                 `<div style="margin-bottom:15px">
           <div style="font-size:0.99em;color:#203975;margin-bottom:4px;">${v.label}</div>
@@ -312,44 +324,44 @@ let remainingTime = 60; // default 1 minute
 let timerSound = new Audio("https://actions.google.com/sounds/v1/alarms/beep_short.ogg");
 
 function updateTimerDisplay() {
-  let minutes = String(Math.floor(remainingTime / 60)).padStart(2, '0');
-  let seconds = String(remainingTime % 60).padStart(2, '0');
-  document.getElementById("timerDisplay").textContent = `${minutes}:${seconds}`;
+    let minutes = String(Math.floor(remainingTime / 60)).padStart(2, '0');
+    let seconds = String(remainingTime % 60).padStart(2, '0');
+    document.getElementById("timerDisplay").textContent = `${minutes}:${seconds}`;
 }
 
 function startTimer() {
-  if (!countdown) {
-    // Always read new input values at start
-    let mins = parseInt(document.getElementById("minutesInput").value) || 0;
-    let secs = parseInt(document.getElementById("secondsInput").value) || 0;
-    remainingTime = mins * 60 + secs;
-    
-    updateTimerDisplay();
-    countdown = setInterval(() => {
-      remainingTime--;
-      updateTimerDisplay();
-      if (remainingTime <= 0) {
-        clearInterval(countdown);
-        countdown = null;
-        timerSound.play(); // play the sound
-        alert("Time's up! ⏱");
-      }
-    }, 1000);
-  }
+    if (!countdown) {
+        // Always read new input values at start
+        let mins = parseInt(document.getElementById("minutesInput").value) || 0;
+        let secs = parseInt(document.getElementById("secondsInput").value) || 0;
+        remainingTime = mins * 60 + secs;
+
+        updateTimerDisplay();
+        countdown = setInterval(() => {
+            remainingTime--;
+            updateTimerDisplay();
+            if (remainingTime <= 0) {
+                clearInterval(countdown);
+                countdown = null;
+                timerSound.play(); // play the sound
+                alert("Time's up! ⏱");
+            }
+        }, 1000);
+    }
 }
 
 
 function pauseTimer() {
-  clearInterval(countdown);
-  countdown = null;
+    clearInterval(countdown);
+    countdown = null;
 }
 
 function resetTimer() {
-  pauseTimer();
-  let mins = parseInt(document.getElementById("minutesInput").value) || 0;
-  let secs = parseInt(document.getElementById("secondsInput").value) || 0;
-  remainingTime = mins * 60 + secs;
-  updateTimerDisplay();
+    pauseTimer();
+    let mins = parseInt(document.getElementById("minutesInput").value) || 0;
+    let secs = parseInt(document.getElementById("secondsInput").value) || 0;
+    remainingTime = mins * 60 + secs;
+    updateTimerDisplay();
 }
 
 // Initialize display
