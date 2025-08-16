@@ -184,6 +184,60 @@
         background: #ffdd57;
     }
 
+    /* Timer toggle icon (small button) */
+    #timerToggle {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #2a2a72;
+        color: #fff;
+        font-size: 1.4em;
+        padding: 10px 12px;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        z-index: 21;
+        transition: transform 0.2s;
+    }
+
+    #timerToggle:hover {
+        transform: scale(1.1);
+    }
+
+    /* Hidden by default */
+    #timerBox {
+        display: none;
+        /* 👈 important */
+        position: fixed;
+        bottom: 70px;
+        /* above toggle icon */
+        right: 20px;
+        background: #2a2a72;
+        color: #fff;
+        padding: 12px;
+        border-radius: 10px;
+        text-align: center;
+        font-family: monospace;
+        font-size: 1.4em;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        z-index: 20;
+    }
+
+    #timerBox button {
+        background: #fff;
+        border: none;
+        color: #2a2a72;
+        margin: 4px 2px;
+        padding: 4px 8px;
+        font-size: 1.02em;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #timerBox button:hover {
+        background: #ffdd57;
+    }
+
 
 
     @media (max-width:480px) {

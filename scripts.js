@@ -350,6 +350,16 @@ function startTimer() {
     }
 }
 
+// Timer Toggle
+document.getElementById("timerToggle").onclick = function () {
+    const box = document.getElementById("timerBox");
+    if (box.style.display === "none" || box.style.display === "") {
+        box.style.display = "block";
+    } else {
+        box.style.display = "none";
+    }
+};
+
 
 function pauseTimer() {
     clearInterval(countdown);
